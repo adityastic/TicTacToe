@@ -200,6 +200,7 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface{
 			if(clients.size()>0) {
 				resetBoard();
 				resetScore();
+				clients.get(0).getScores(game.getScore());
 				clients.get(0).showMessage(ClientMessage.WAITING_PLAYER_2);
 			}
 		}
