@@ -93,9 +93,20 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInferface{
 		}
 	}
 
-	public synchronized void clickedLocation(int i, int j) throws RemoteException {
-		if(currentState)
-			serverInst.clickedLocation(new GameClickInfo(playerNum, i, j));
+	public void clickedLocation(int i, int j) throws RemoteException {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				if(currentState)
+					try {
+						serverInst.clickedLocation(new GameClickInfo(playerNum, i, j));
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		}).start();
 	}
 
 	@Override
