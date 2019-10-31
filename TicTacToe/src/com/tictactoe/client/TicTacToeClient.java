@@ -67,10 +67,10 @@ public class TicTacToeClient {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						try {
-							client.clickedLocation(
+							((JButton)e.getSource()).setText(client.clickedLocation(
 									e.getActionCommand().charAt(0) - '0',
 									e.getActionCommand().charAt(1) - '0'
-									);
+									));
 						} catch (RemoteException e1) {
 							e1.printStackTrace();
 						}
