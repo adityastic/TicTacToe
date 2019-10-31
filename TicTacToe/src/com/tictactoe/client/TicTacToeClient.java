@@ -83,7 +83,7 @@ public class TicTacToeClient {
 	}
 
 	private void initializeClient() throws MalformedURLException, RemoteException, NotBoundException {
-		client = new ClientImpl((ServerInterface) Naming.lookup("rmi:///tictacToeServer"), new OnMessageListener() {
+		client = new ClientImpl((ServerInterface) Naming.lookup("rmi://192.168.43.52/tictacToeServer"), new OnMessageListener() {
 
 			@Override
 			public void showMessage(String msg) {
