@@ -93,7 +93,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInferface{
 		}
 	}
 
-	public String clickedLocation(int i, int j) throws RemoteException {
+	public void clickedLocation(int i, int j) throws RemoteException {
 		new Thread(new Runnable() {
 			
 			@Override
@@ -107,12 +107,15 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInferface{
 					}
 			}
 		}).start();
-		return ((playerNum == 1) ? "O" :(playerNum == 2)? "X": "-");
 	}
 
 	@Override
 	public void getScores(ScoreBoard scores) throws RemoteException {
 		listener.getScores(scores);
+	}
+
+	public String getSymbol() {
+		return (playerNum == 1) ? "O" : "X";
 	}
 }
 
