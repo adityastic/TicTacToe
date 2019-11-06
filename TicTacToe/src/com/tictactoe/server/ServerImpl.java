@@ -197,9 +197,9 @@ public class ServerImpl extends UnicastRemoteObject implements ServerInterface{
 			System.out.println("Removed " + toDelete.size() + " persons");
 			clients.removeAll(toDelete);
 
+			resetBoard();
+			resetScore();
 			if(clients.size()>0) {
-				resetBoard();
-				resetScore();
 				clients.get(0).getScores(game.getScore());
 				clients.get(0).showMessage(ClientMessage.WAITING_PLAYER_2);
 			}
