@@ -115,7 +115,10 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInferface{
 	}
 
 	public String getSymbol() {
-		return (playerNum == 1) ? "O" : "X";
+		if(currentState)
+			return (playerNum == 1) ? "O" : "X";
+		else
+			return "-";
 	}
 }
 
